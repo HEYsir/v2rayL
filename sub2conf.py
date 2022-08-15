@@ -72,6 +72,8 @@ class Sub2Conf(object):
     def b642conf(self, prot, tp, b64str):
         if prot == "vmess":
             ret = eval(base64.b64decode(b64str + "==").decode())
+            if ret["tls"] and 'none' == ret["tls"]:
+                ret["tls"] = ''
             region = ret['ps']
 
         elif prot == "ss":

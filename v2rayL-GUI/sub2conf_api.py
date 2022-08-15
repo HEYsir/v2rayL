@@ -51,6 +51,8 @@ class Sub2Conf(object):
         """
         if prot == "vmess":
             ret = json.loads(parse.unquote(base64.b64decode(b64str+"==").decode()).replace("\'", "\""))
+            if ret['tls'] and 'none'==ret['tls']:
+                ret['tls'] = ''
             region = ret['ps']
 
         elif prot == "shadowsocks":
