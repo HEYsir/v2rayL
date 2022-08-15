@@ -6,7 +6,7 @@ from PyQt5.QtCore import QThread, pyqtSignal, qCritical
 from sub2conf_api import MyException
 import subprocess
 import requests
-
+# import ptvsd     # 解决 QThread 线程无法加入断点问题.
 
 class ConnectThread(QThread):
     """连接线程"""
@@ -22,6 +22,7 @@ class ConnectThread(QThread):
         self.wait()
 
     def run(self):
+        # ptvsd.debug_this_thread()  # 2 调用 debug_this_thread
         try:
             # row = self.tableView.currentIndex().row()
             region = self.tableView.item(self.row, 1).text()
