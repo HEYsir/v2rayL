@@ -1,0 +1,6 @@
+pyenv/
+*.pyc
+build/
+dist/
+v2rayLui.spec
+.vscode/
